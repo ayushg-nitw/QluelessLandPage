@@ -85,7 +85,7 @@ const GoogleSignInButton = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
             <div className="animate-spin h-10 w-10 border-t-4 border-blue-500 border-solid rounded-full"></div>
-            <p className="mt-3 text-gray-800 font-semibold">
+            <p className="mt-3 text-black font-gilroy gilroy-black">
               Signing in, please wait...
             </p>
           </div>
@@ -101,12 +101,12 @@ const GoogleSignInButton = () => {
         <img
           src={googleImage}
           alt="Google"
-          className="w-6 h-6 absolute left-4"
+          className="w-6 h-6 absolute left-[70px]"
         />
 
         {/* Button Text */}
-        <span className="text-black text-lg font-bold">
-          {isSubmitting ? "Signing in..." : "Continue with Google"}
+        <span className="text-black text-lg font-gilroy gilroy-700">
+          {isSubmitting ? "Signing in..." : "continue with google"}
         </span>
       </button>
     </div>

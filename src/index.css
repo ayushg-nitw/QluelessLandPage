@@ -5,15 +5,12 @@
   font-style: normal;
 }
 
-
 @font-face {
   font-family: 'Gilroy';
   src: url('./assets/Fonts/gilroy/Gilroy-Thin.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-
-
 
 
 @tailwind base;
@@ -78,4 +75,20 @@ body {
   background: radial-gradient(circle, #FBB809 0%, #8B590C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.gilroy-500 {
+  font-weight: 500;
+}
+
+.gilroy-600 {
+  font-weight: 600;
+}
+
+.gilroy-700 {
+  font-weight: 700;
+}
+
+.gilroy-800 {
+  font-weight: 800;
 }

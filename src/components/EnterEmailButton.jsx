@@ -69,7 +69,7 @@ const EnterEmailButton = () => {
         placeholder="enter your email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="relative w-full bg-transparent text-white placeholder-white px-4 py-3 outline-none font-gilroyRegular"
+        className="relative w-full h-[50px] bg-transparent text-white placeholder-white px-4 py-3 outline-none font-gilroy gilroy-600"
         disabled={isSubmitting}
       />
 

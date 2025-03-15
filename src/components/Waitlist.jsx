@@ -15,24 +15,24 @@ const Waitlist = () => {
 
       <div className="w-1/2 flex flex-col items-center justify-center p-10 absolute top-0 left-20 mt-12">
         <img className="h-[70px] w-full" src={qluelessDark} alt="Qlueless" />
-        <p className="font-gilroy text-2xl text-center w-[336px] h-[86px] mt-4">
+        <p className="font-gilroy gilroy-800 text-2xl text-center w-[336px] h-[86px] mt-4">
           LOST IN STYLE <br /> FOUND IN FASHION
         </p>
 
         {/* Waitlist Form */}
-        <div className="mt-2 p-10 rounded-3xl border border-white-800 w-[470px] h-[316px] text-center">
-          <p className="font-gilroy text-xl text-gray-300 mb-2">
+        <div className="mt-2 p-10 rounded-[72px] border border-white-800 w-[470px] h-[316px] text-center">
+          <p className="font-gilroy gilroy-600 text-lg text-white mb-2">
             join the waitlist
           </p>
 
           <EnterEmailButton />
 
-          <p className="font-gilroy text-gray-400 text-sm my-2">OR</p>
+          <p className="font-gilroy gilroy-600 text-white text-lg my-2">or</p>
 
           <GoogleSignInButton />
 
-          <p className="font-gilroy text-sm text-gray-400 mt-3">
-            Qlue club with 3451 fashion fanatics
+          <p className="font-gilroy gilroy-600 text-lg text-white mt-3">
+            join the qlue club
           </p>
         </div>
       </div>

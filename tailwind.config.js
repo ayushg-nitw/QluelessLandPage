@@ -40,8 +40,8 @@ export default {
       },
       fontFamily: {
         gilroy: ["Gilroy", "sans-serif"],
-        gilroyThin: ["Gilroy", "sans-serif"],
-        gilroyLight: ["Gilroy", "sans-serif"],
+        // gilroyThin: ["Gilroy", "sans-serif"],
+        // gilroyLight: ["Gilroy", "sans-serif"],
         sans: ["Gilroy", ...fontFamily.sans],
         code: "var(--font-code)",
         grotesk: "var(--font-grotesk)",

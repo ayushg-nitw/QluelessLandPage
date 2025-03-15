@@ -15,7 +15,7 @@ const Waitlist = () => {
 
       <div className="w-1/2 flex flex-col items-center justify-center p-10 absolute top-0 left-20 mt-12">
         <img className="h-[70px] w-full" src={qluelessDark} alt="Qlueless" />
-        <img className="h-[70px] w-full" src={qlue} alt="Qlueless" />
+        <img className="h-[70px] w-full" src={qlue} alt="Qlue" />
         <p className="font-gilroy text-2xl text-center w-[336px] h-[86px] mt-4">
           LOST IN STYLE <br /> FOUND IN FASHION
         </p>

@@ -63,12 +63,10 @@ const Info2 = () => {
         />
       </div>
 
-      {/* Content Section */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-6 lg:px-16">
         {/* Right Side - Rotating Images */}
 
         {/* Outline Box Behind the Images */}
-        <div className="absolute w-[290px] h-[440px] left-[273px] mt-[100px] border border-white rounded-3xl border-2"></div>
 
         <div className="relative flex justify-center items-center mt-[15%] ml-[15%] h-[400px] w-[500px]">
           {imageOrder.map((img, index) => (

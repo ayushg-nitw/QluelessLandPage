@@ -10,10 +10,10 @@ import GoogleSignInButton from "./GoogleSignInButton";
 const initialImages = [img1, img2, img3, img4];
 
 const positions = [
-  { top: "5%", left: "5%", height: "250px" }, // Top-left
-  { top: "5%", left: "50%", height: "180px" }, // Top-right
-  { top: "60%", left: "50%", height: "250px" }, // Bottom-right
-  { top: "60%", left: "5%", height: "180px" }, // Bottom-left
+  { top: "5%", left: "5%", height: "250px" },
+  { top: "5%", left: "50%", height: "180px" },
+  { top: "60%", left: "50%", height: "250px" },
+  { top: "60%", left: "5%", height: "180px" },
 ];
 
 const Waitlist = () => {
@@ -55,16 +55,18 @@ const Waitlist = () => {
       ref={sectionRef}
       className="relative flex min-h-screen w-full bg-black text-white mt-10 shadow-md"
     >
-      <div className="w-1/2 flex flex-col items-center justify-center p-10 absolute top-0 left-20 mt-12">
-        <div className="font-glorita text-[50px]">
+      {/* Left Content Section - Scaled Down on Medium & Smaller Screens */}
+
+      <div className="w-full md:w-3/4 lg:w-1/2 flex flex-col items-center justify-center p-6 md:p-8 lg:p-10 absolute top-0 md:left-10 lg:left-20 mt-6 md:mt-10">
+        <div className="font-glorita text-[40px] md:text-[35px] lg:text-[50px]">
           <span className="bg-glorita-gradient">Qlue</span>
         </div>
-        <p className="font-gilroyLight text-3xl text-center w-[336px] h-[86px] mb-5">
+        <p className="font-gilroyLight text-2xl md:text-xl lg:text-3xl text-center w-[280px] md:w-[300px] lg:w-[336px] h-auto md:h-[70px] lg:h-[86px] mb-5">
           LOST IN STYLE <br /> FOUND IN FASHION
         </p>
-        <div className="mt-2 p-10 bg-white rounded-[72px] border border-white-800 w-[470px] h-[316px] text-center">
+        <div className="mt-2 p-6 md:p-8 lg:p-10 bg-white rounded-[60px] md:rounded-[50px] border border-white-800 w-[320px] md:w-[380px] lg:w-[470px] h-auto md:h-[280px] lg:h-[316px] text-center">
           <p className="font-gilroy text-lg text-black mb-2">
-            join the waitlist
+            Join the waitlist
           </p>
           <EnterEmailButton />
           <p className="font-gilroy text-black text-lg my-2">OR</p>
@@ -74,7 +76,9 @@ const Waitlist = () => {
           </p>
         </div>
       </div>
-      <div className="absolute flex items-center justify-center top-[30%] right-[10%] w-[420px] h-[420px] ">
+
+      {/* Right Image Animation Section - Hidden on Medium & Smaller Screens */}
+      <div className="hidden xl:flex lg:flex absolute items-center justify-center top-[30%] xl:right[23%] lg:right-[5%] w-[420px] h-[420px]">
         {imageOrder.map((img, index) => (
           <motion.img
             key={img}

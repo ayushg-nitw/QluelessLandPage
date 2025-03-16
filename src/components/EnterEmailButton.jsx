@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { db, doc, getDoc, setDoc } from "../firebaseConfig"; // Firestore setup
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { IoIosLogOut } from "react-icons/io";
 import send from "../assets/svg/send.svg";
 
 const EnterEmailButton = () => {
+  const BEARER_TOKEN = import.meta.env.VITE_VERAFALIA_API_KEY;
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -14,9 +14,39 @@ const EnterEmailButton = () => {
     return emailRegex.test(email);
   };
 
+  const verifyEmail = async (email) => {
+    const API_URL = "https://api.verifalia.com/v2.6/email-validations";
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${BEARER_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          entries: [{ inputData: email }],
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.entries?.data[0]?.classification === "Undeliverable") {
+        console.log("Invalid Email:", result);
+        return false;
+      }
+
+      console.log("Valid Email:", result);
+      return true;
+    } catch (error) {
+      console.error("Email verification failed:", error);
+      return false;
+    }
+  };
+
   const handleClick = async () => {
-    if (!email || !isValidEmail(email)) {
-      toast.error("Please enter a valid email address!", {
+    if (!email) {
+      toast.error("Please enter an email!", {
         position: "top-center",
         autoClose: 3000,
       });
@@ -24,6 +54,18 @@ const EnterEmailButton = () => {
     }
 
     setIsSubmitting(true);
+
+    const isEmailValid = await verifyEmail(email);
+    if (!isEmailValid) {
+      toast.error("Invalid email address!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Firestore logic remains unchanged
     try {
       const userRef = doc(db, "waitlist", email);
       const userDoc = await getDoc(userRef);
@@ -48,6 +90,7 @@ const EnterEmailButton = () => {
         autoClose: 3000,
       });
     }
+
     setIsSubmitting(false);
   };
 
@@ -87,7 +130,7 @@ const EnterEmailButton = () => {
       <button
         onClick={handleClick}
         disabled={isSubmitting}
-        className="relative flex items-center justify-center w-11 h-10 bg-white rounded-full mr-1 text-black transition-transform hover:scale-110" // Keeps the right side fully curved
+        className="relative flex items-center justify-center w-11 h-10 bg-white rounded-full mr-1 text-black transition-transform hover:scale-110"
       >
         {isSubmitting ? (
           <span className="animate-spin">⏳</span>

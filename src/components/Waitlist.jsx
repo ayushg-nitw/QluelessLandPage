@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import qluelessDark from "../assets/svg/logoName.svg";
-import qlue from "../assets/svg/Qlue.svg";
+import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import img1 from "../assets/Images/page1-1.jpg";
 import img2 from "../assets/Images/page1-2.jpg";
 import img3 from "../assets/Images/page1-3.jpg";
@@ -8,72 +7,90 @@ import img4 from "../assets/Images/page1-4.jpeg";
 import EnterEmailButton from "./EnterEmailButton";
 import GoogleSignInButton from "./GoogleSignInButton";
 
-const Waitlist = () => {
-  return (
-    <div className="flex relative min-h-screen w-full bg-black text-white mt-10">
-      {/* Left Side - Content */}
+const initialImages = [img1, img2, img3, img4];
 
+const positions = [
+  { top: "5%", left: "5%", height: "250px" }, // Top-left
+  { top: "5%", left: "50%", height: "180px" }, // Top-right
+  { top: "60%", left: "50%", height: "250px" }, // Bottom-right
+  { top: "60%", left: "5%", height: "180px" }, // Bottom-left
+];
+
+const Waitlist = () => {
+  const [imageOrder, setImageOrder] = useState(initialImages);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let interval;
+    if (isVisible) {
+      interval = setInterval(() => {
+        setImageOrder((prev) => [prev[1], prev[2], prev[3], prev[0]]);
+      }, 2000);
+    }
+    return () => clearInterval(interval);
+  }, [isVisible]);
+
+  return (
+    <div
+      ref={sectionRef}
+      className="relative flex min-h-screen w-full bg-black text-white mt-10 shadow-md"
+    >
       <div className="w-1/2 flex flex-col items-center justify-center p-10 absolute top-0 left-20 mt-12">
-        <img className="h-[70px] w-full" src={qlue} alt="Qlueless" />
-        <p className="font-gilroy text-2xl text-center w-[336px] h-[86px] mt-4">
+        <div className="font-glorita text-[50px]">
+          <span className="bg-glorita-gradient">Qlue</span>
+        </div>
+        <p className="font-gilroyLight text-3xl text-center w-[336px] h-[86px] mb-5">
           LOST IN STYLE <br /> FOUND IN FASHION
         </p>
-
-        {/* Waitlist Form */}
-        <div className="mt-2 p-10 rounded-[72px] border border-white-800 w-[470px] h-[316px] text-center">
-          <p className="font-gilroy text-lg text-white mb-2">
+        <div className="mt-2 p-10 bg-white rounded-[72px] border border-white-800 w-[470px] h-[316px] text-center">
+          <p className="font-gilroy text-lg text-black mb-2">
             join the waitlist
           </p>
-
           <EnterEmailButton />
-
-          <p className="font-gilroy text-white text-lg my-2">or</p>
-
+          <p className="font-gilroy text-black text-lg my-2">OR</p>
           <GoogleSignInButton />
-
-          <p className="font-gilroy text-lg text-white mt-3">
-            join the qlue club
+          <p className="font-gilroy text-lg text-black mt-3">
+            Join the Qlue Club
           </p>
         </div>
       </div>
-
-      {/* Right Side - Images Grid */}
-      <div className="grid grid-cols-2 gap-4 p-4 absolute top-[12%] right-[15%]">
-        {/* Image 1 */}
-        <div className="w-[190px] h-[266px] rounded-3xl overflow-hidden floating">
-          <img
-            className="parallax-image w-full h-full object-cover"
-            src={img1}
-            alt="Fashion"
+      <div className="absolute flex items-center justify-center top-[30%] right-[10%] w-[420px] h-[420px] ">
+        {imageOrder.map((img, index) => (
+          <motion.img
+            key={img}
+            src={img}
+            alt={`Fashion ${index + 1}`}
+            className="absolute w-[180px] rounded-3xl shadow-lg"
+            animate={{
+              top: positions[index].top,
+              left: positions[index].left,
+              height: positions[index].height,
+              transform: "translate(-50%, -50%)",
+            }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            style={{ position: "absolute" }}
           />
-        </div>
-
-        {/* Image 2 */}
-        <div className="w-[190px] h-[200px] rounded-3xl overflow-hidden floating delay-1">
-          <img
-            className="parallax-image w-full h-full object-cover"
-            src={img2}
-            alt="Fashion"
-          />
-        </div>
-
-        {/* Image 3 */}
-        <div className="w-[190px] h-[200px] rounded-3xl overflow-hidden floating delay-2">
-          <img
-            className="parallax-image w-full h-full object-cover"
-            src={img3}
-            alt="Fashion"
-          />
-        </div>
-
-        {/* Image 4 */}
-        <div className="w-[190px] h-[266px] rounded-3xl overflow-hidden floating delay-3 mt-[-35%]">
-          <img
-            className="parallax-image w-full h-full object-cover"
-            src={img4}
-            alt="Fashion"
-          />
-        </div>
+        ))}
       </div>
     </div>
   );

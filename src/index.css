@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: 'Gilroy';
   src: url('./assets/Fonts/gilroy/Gilroy-Regular.ttf') format('truetype');
@@ -5,17 +9,37 @@
   font-style: normal;
 }
 
-/* @font-face {
-  font-family: 'Gilroy';
+@font-face {
+  font-family: 'Gilroy-Light';
+  src: url('./assets/Fonts/gilroy/Gilroy-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('./assets/Fonts/gilroy/Gilroy-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy-Thin';
   src: url('./assets/Fonts/gilroy/Gilroy-Thin.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-} */
+}
 
+@font-face {
+  font-family: 'Glorita';
+  src: url('./assets/Fonts/gloritta-font-1741378048-0/Gloritta.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer utilities {
+  .gradient-text {}
+}
 
 body {
   margin: 0;
@@ -71,24 +95,15 @@ body {
   transform: translateY(-100%);
 }
 
+
 .bg-glorita-gradient {
-  background: radial-gradient(circle, #FBB809 0%, #8B590C 100%);
+  background: radial-gradient(63.35% 63.35% at 50% 50%, #FBB809 0%, #8B590C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+  background-clip: text;
+  text-fill-color: transparent;
 
-.gilroy-500 {
-  font-weight: 500;
-}
-
-.gilroy-600 {
-  font-weight: 600;
-}
-
-.gilroy-700 {
-  font-weight: 700;
-}
-
-.gilroy-800 {
-  font-weight: 800;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

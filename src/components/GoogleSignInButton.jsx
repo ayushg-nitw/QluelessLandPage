@@ -95,14 +95,10 @@ const GoogleSignInButton = () => {
       <button
         onClick={handleClick}
         disabled={isSubmitting}
-        className="relative w-full h-[50px] rounded-full overflow-hidden bg-white border border-gray-300 shadow-md flex items-center justify-center"
+        className="relative w-full h-[50px] rounded-full overflow-hidden bg-white border border-black shadow-md flex items-center justify-center gap-2"
       >
         {/* Google Icon */}
-        <img
-          src={googleImage}
-          alt="Google"
-          className="w-6 h-6 absolute left-[70px]"
-        />
+        <img src={googleImage} alt="Google" className="w-6 h-6" />
 
         {/* Button Text */}
         <span className="text-black text-lg font-gilroy ">

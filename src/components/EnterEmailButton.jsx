@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { db, doc, getDoc, setDoc } from "../firebaseConfig"; // Firestore setup
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { IoIosLogOut } from "react-icons/io";
+// import { IoIosLogOut } from "react-icons/io";
+import send from "../assets/svg/send.svg";
 
 const EnterEmailButton = () => {
   const [email, setEmail] = useState("");
@@ -64,25 +65,34 @@ const EnterEmailButton = () => {
       </svg>
 
       {/* Input Field */}
-      <input
-        type="email"
-        placeholder="enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="relative w-full h-[50px] bg-transparent text-white placeholder-white px-4 py-3 outline-none font-gilroy"
-        disabled={isSubmitting}
-      />
+      <div className="relative w-full">
+        <input
+          type="email"
+          placeholder=""
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full h-[50px] bg-transparent text-black px-10 py-3 outline-none font-gilroy placeholder-transparent"
+          disabled={isSubmitting}
+        />
+        <label
+          className={`absolute left-[40%] top-3 text-black text-lg ${
+            email ? "hidden" : "text-center"
+          }`}
+        >
+          enter your email
+        </label>
+      </div>
 
       {/* Submit Button with Curved Right Side */}
       <button
         onClick={handleClick}
         disabled={isSubmitting}
-        className="relative flex items-center justify-center w-20 h-10 text-black transition-transform hover:scale-110" // Keeps the right side fully curved
+        className="relative flex items-center justify-center w-11 h-10 bg-white rounded-full mr-1 text-black transition-transform hover:scale-110" // Keeps the right side fully curved
       >
         {isSubmitting ? (
           <span className="animate-spin">⏳</span>
         ) : (
-          <IoIosLogOut className="text-white ml-4" size={25} />
+          <img src={send} className="text-white ml-1" />
         )}
       </button>
     </div>

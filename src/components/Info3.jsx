@@ -78,15 +78,22 @@ const Info3 = () => {
       </div>
 
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-6 lg:px-16">
-        <div className="max-w-lg text-center lg:text-left mt-[25%] ml-[20%]">
-          <h2 className="font-gilroy text-3xl text-center lg:text-4xl mb-4">
-            A COMMUNITY THAT <br /> SHOPS, SHARES AND <br /> INSPIRES
-          </h2>
-          <p className="font-gilroyThin text-center text-lg lg:text-2xl text-yellow-500">
-            no more lonely checkouts, <br /> join people who <br />
-            <span className="text-white font-semibold">love fashion</span>{" "}
+        <div className="max-w-lg  flex flex-col justify-center items-center mt-[25%] ml-[20%]">
+          <h2 className="font-gilroyLight text-3xl text-center lg:text-4xl mb-4">
+            A COMMUNITY THAT <br />
+            SHOPS, SHARES AND
             <br />
-            as much as you do.
+            INSPIRES
+          </h2>
+
+          <p className="font-gilroyLight text-center text-3xl leading-tight relative w-[500px]">
+            <span className="bg-glorita-gradient bg-clip-text text-transparent ">
+              no more lonely checkouts,
+              <br />
+              join people who <br />
+              love fashion <br />
+              as much as you do
+            </span>
           </p>
         </div>
 
@@ -95,7 +102,7 @@ const Info3 = () => {
             <motion.img
               key={index}
               src={image}
-              className="absolute w-[150px] h-[220px] rounded-2xl shadow-lg"
+              className="absolute w-[120px] h-[200px] rounded-2xl shadow-lg"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={
                 isVisible
@@ -118,7 +125,7 @@ const Info3 = () => {
       </div>
 
       <div className="absolute flex justify-center mr-[-96%]">
-        <img src={lines6} alt="Decorative Lines" />
+        <img src={lines6} className="h-screen" />
       </div>
     </section>
   );

@@ -95,22 +95,25 @@ const Info2 = () => {
         </div>
 
         {/* Left Side - Text Content */}
-        <div className="max-w-lg text-center lg:text-left mt-[15%] ml-[10%]">
-          <h2 className="font-gilroy text-3xl text-center lg:text-4xl mb-4">
-            SCROLL, GET INSPIRED SHOP INSTANTLY
+        <div className="max-w-lg text-center flex flex-col justify-center items-center ml-[10%] mt-[10%]">
+          <h2 className="font-gilroyLight text-3xl text-center lg:text-4xl mb-4">
+            SCROLL, GET INSPIRED <br />
+            SHOP INSTANTLY
           </h2>
-          <p className="font-gilroyThin text-center text-lg lg:text-2xl text-yellow-500">
-            no more redirect, <br />
-            join people who <br />
-            <span className="text-white font-semibold">just one tap</span>{" "}
-            <br />
-            and it’s yours...{" "}
+
+          <p className="font-gilroyLight text-center text-3xl leading-tight relative w-[353px]">
+            <span className="bg-glorita-gradient bg-clip-text text-transparent ">
+              no more redirect, <br />
+              just one tap
+              <br />
+              and it's yours
+            </span>
           </p>
         </div>
       </div>
 
       <div className="absolute flex justify-center mr-[-96%]">
-        <img src={lines6} />
+        <img src={lines6} className="h-screen" />
       </div>
     </section>
   );

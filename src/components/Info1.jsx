@@ -24,18 +24,19 @@ const Info1 = () => {
 
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-6 lg:px-16">
         {/* Left Side - Text Content */}
-        <div className="max-w-lg text-center lg:text-left mt-[5%] ml-[20%]">
-          <h2 className="font-gilroy text-3xl text-center lg:text-4xl mb-4">
-            DISCOVER TRENDY NEW BRANDS
+        <div className="max-w-lg  flex flex-col justify-center items-center mt-[3%] ml-[20%]">
+          <h2 className="font-gilroyLight text-3xl text-center lg:text-4xl mb-4">
+            DISCOVER TRENDY <br />
+            NEW BRANDS
           </h2>
-          <p className="font-gilroyThin text-center text-lg lg:text-2xl text-yellow-500">
-            no more endless quest, <br />
-            just{" "}
-            <span className="text-white font-semibold">
-              next big thing
-            </span>{" "}
-            <br />
-            right at your fingertips.{" "}
+
+          <p className="font-gilroyLight text-center text-3xl leading-tight relative w-[353px]">
+            <span className="bg-glorita-gradient bg-clip-text text-transparent ">
+              no more endless quest, <br />
+              just the next big thing
+              <br />
+              right at you fingertips
+            </span>
           </p>
         </div>
 
@@ -77,7 +78,7 @@ const Info1 = () => {
       </div>
 
       <div className="absolute flex justify-center mr-[-96%]">
-        <img src={lines6} />
+        <img src={lines6} className="h-screen" />
       </div>
     </section>
   );

@@ -5,9 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import send from "../assets/svg/send.svg";
 
 const EnterEmailButton = () => {
-  const BEARER_TOKEN = import.meta.env.VITE_VERAFALIA_API_KEY;
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const BEARER_TOKEN = import.meta.env.VITE_VERIFALIA_API_KEY; // Ensure your .env file has VITE_VERIFALIA_API_KEY
 
   const isValidEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -107,19 +109,20 @@ const EnterEmailButton = () => {
         <rect width="100%" height="100%" fill="url(#gradEmail)" />
       </svg>
 
-      {/* Input Field */}
       <div className="relative w-full">
         <input
           type="email"
           placeholder=""
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full h-[50px] bg-transparent text-black px-10 py-3 outline-none font-gilroy placeholder-transparent"
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(email.length > 0)} // Keeps label hidden if email is entered
+          className="w-full h-[50px] bg-transparent text-black px-10 py-3 outline-none font-gilroy placeholder-transparent transition-shadow duration-300 focus:shadow-lg hover:shadow-md shadow-yellow-500"
           disabled={isSubmitting}
         />
         <label
-          className={`absolute left-[40%] top-3 text-black text-lg ${
-            email ? "hidden" : "text-center"
+          className={`absolute left-[40%] top-3 text-white text-lg transition-opacity duration-300 ${
+            isFocused ? "opacity-0" : "opacity-100"
           }`}
         >
           enter your email

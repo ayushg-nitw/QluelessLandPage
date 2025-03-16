@@ -11,7 +11,7 @@ const Info1 = () => {
   return (
     <section className="relative bg-black text-white flex flex-col items-center justify-between ">
       <div
-        className={`top-0 left-0 w-full bg-white h-[70px] flex px-4 z-50 shadow-md`}
+        className={`top-0 left-0 w-full bg-white h-[70px] flex px-4 z-50 rounded-full shadow-md`}
       >
         <img
           src={Qlue}
@@ -77,7 +77,7 @@ const Info1 = () => {
         </div>
       </div>
 
-      <div className="absolute flex justify-center mr-[-96%]">
+      <div className="absolute flex justify-center mr-[-97%]">
         <img src={lines6} className="h-screen" />
       </div>
     </section>
